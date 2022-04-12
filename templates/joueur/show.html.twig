@@ -1,0 +1,45 @@
+{% extends 'baseback.html.twig' %}
+
+{% block Container %}
+    <h1>Joueur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdJoueur</th>
+                <td>{{ joueur.idJoueur }}</td>
+            </tr>
+            <tr>
+                <th>NomJoueur</th>
+                <td>{{ joueur.nomJoueur }}</td>
+            </tr>
+            <tr>
+                <th>Datenaiss</th>
+                <td>{{ joueur.datenaiss ? joueur.datenaiss|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ joueur.age }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ joueur.pays }}</td>
+            </tr>
+            <tr>
+                <th>Drapeau</th>
+                <td>{{ joueur.drapeau }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ joueur.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+    <a href="{{ path('app_joueur_index') }}"><button type="submit" class="btn btn-secondary">back to list</button></a>
+    <a href="{{ path('app_joueur_edit', {'idJoueur': joueur.idJoueur}) }}"><button type="submit" class="btn btn-info">edit</button></a>
+
+    {{ include('joueur/_delete_form.html.twig') }}
+{% endblock %}

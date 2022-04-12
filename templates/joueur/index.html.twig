@@ -1,0 +1,44 @@
+{% extends 'baseback.html.twig' %}
+
+{% block Container %}
+    <h1>Joueur index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdJoueur</th>
+                <th>NomJoueur</th>
+                <th>Datenaiss</th>
+                <th>Age</th>
+                <th>Pays</th>
+                <th>Drapeau</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for joueur in joueurs %}
+            <tr>
+                <td>{{ joueur.idJoueur }}</td>
+                <td>{{ joueur.nomJoueur }}</td>
+                <td>{{ joueur.datenaiss ? joueur.datenaiss|date('Y-m-d') : '' }}</td>
+                <td>{{ joueur.age }}</td>
+                <td>{{ joueur.pays }}</td>
+                <td>{{ joueur.drapeau }}</td>
+                <td>{{ joueur.image }}</td>
+                <td>
+                    <a href="{{ path('app_joueur_show', {'idJoueur': joueur.idJoueur}) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                    <a href="{{ path('app_joueur_edit', {'idJoueur': joueur.idJoueur}) }}"><i class="nav-icon fas fa-edit" aria-hidden="true"></i></a> 
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+    <a href="{{ path('app_joueur_new') }}"><button type="submit" class="btn btn-success">Create new</button></a>
+{% endblock %}
