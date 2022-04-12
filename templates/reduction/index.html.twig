@@ -1,0 +1,34 @@
+{% extends 'basefront.html.twig' %}
+
+
+{% block Container %}
+    <h1>Reduction index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdBon</th>
+                <th>Reduction</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reduction in reductions %}
+            <tr>
+                <td>{{ reduction.idBon }}</td>
+                <td>{{ reduction.reduction }}</td>
+                <td>
+                    <a href="{{ path('app_reduction_show', {'idBon': reduction.idBon}) }}">show</a>
+                    <a href="{{ path('app_reduction_edit', {'idBon': reduction.idBon}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reduction_new') }}">Create new</a>
+{% endblock %}

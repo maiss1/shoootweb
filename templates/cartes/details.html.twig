@@ -1,0 +1,10 @@
+{% extends 'basefront.html.twig' %}
+{% block Container %}
+<section class="content">
+<div class="container ">
+<h1>l'image du film est: </h1>
+<img src="{{ asset ('image/' ~ details.imgcarte ) }}" width='600' height="450">
+</div>
+</section>
+
+{% endblock %}

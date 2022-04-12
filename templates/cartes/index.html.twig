@@ -1,0 +1,44 @@
+{% extends 'basefront.html.twig' %}
+
+
+{% block Container %}
+    <h1>Cartes index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Level</th>
+                <th>Prix</th>
+                <th>IdPremuim</th>
+                <th>Imgcarte</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carte in cartes %}
+            <tr>
+                <td>{{ carte.id }}</td>
+                <td>{{ carte.nom }}</td>
+                <td>{{ carte.prenom }}</td>
+                <td>{{ carte.level }}</td>
+                <td>{{ carte.prix }}</td>
+                <td>{{ carte.idPremuim }}</td>
+                <td>{{ carte.imgcarte }}</td>
+                <td>
+                    <a href="{{ path('app_cartes_show', {'id': carte.id}) }}">show</a>
+                    <a href="{{ path('app_cartes_edit', {'id': carte.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cartes_new') }}">Create new</a>
+{% endblock %}
