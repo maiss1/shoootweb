@@ -1,0 +1,92 @@
+{% extends 'baseback.html.twig' %}
+{% block Container %}
+    <h1>Equipe</h1>
+
+
+<input type="text" id="search" class="form-control form-control-no-border mr-sm-2" placeholder="chercher...">
+      <br>
+      <script src="{{ asset('jquery.min.js') }}"></script>
+
+    <table class="table" id = "tableac">
+        <thead>
+            <tr>
+                <th>IdEquipe</th>
+                <th>NomEquipe</th>
+                <th>Pays</th>
+                <th>Drapeau</th>
+                <th>Logo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipe in equipes %}
+            <tr>
+                <td>{{ equipe.idEquipe }}</td>
+                <td>{{ equipe.nomEquipe }}</td>
+                <td>{{ equipe.pays }}</td>
+                <td>{{ equipe.drapeau }}</td>
+                <td>{{ equipe.logo }}</td>
+                <td>
+                    
+                    <div class="d-flex justify-content-center">
+            <a href="{{ path('app_equipee_show', {'idEquipe': equipe.idEquipe}) }}" class="btn btn-outline-danger">Show</a>
+         </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+
+    <div class="d-flex justify-content-between">
+       <script type="text/javascript">
+        function imprimer_page(){
+            window.print();
+        }
+</script>
+    <form>
+        <input id="impression" class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1s" name="impression" type="button" onclick="imprimer_page()" value="Print this page" />
+    </form>
+
+    
+       <a href="{{ path('app_equipe_new') }}" class="btn btn-outline-success">Create new</a>
+
+       
+
+       
+      </div>
+
+    <script >
+    $(document).ready(function(){
+        $('#search').keyup(function(){
+            search_table($(this).val());
+        });
+        function search_table(value){
+            $('#tableac tbody tr').each(function(){
+                var found = 'false';
+                $(this).each(function(){
+                    if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                    {
+                        found = 'true';
+                    }
+                });
+                if(found == 'true')
+                {
+                    $(this).show();
+                }
+                else
+                {
+                    $(this).hide();
+                }
+            });
+        }
+    });
+</script>
+
+
+{% endblock %}

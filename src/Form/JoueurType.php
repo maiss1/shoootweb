@@ -16,8 +16,8 @@ class JoueurType extends AbstractType
             ->add('datenaiss')
             ->add('age')
             ->add('pays')
-            ->add('drapeau')
-            ->add('image')
+            ->add('drapeau', FileType::class)
+            ->add('image', FileType::class)
             ->add('nomEquipe')
         ;
     }

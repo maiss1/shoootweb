@@ -1,7 +1,6 @@
 {% extends 'baseback.html.twig' %}
-
 {% block Container %}
-    <h1>Joueur index</h1>
+    <h1>Joueur </h1>
 
     <table class="table">
         <thead>
@@ -27,8 +26,8 @@
                 <td>{{ joueur.drapeau }}</td>
                 <td>{{ joueur.image }}</td>
                 <td>
-                    <a href="{{ path('app_joueur_show', {'idJoueur': joueur.idJoueur}) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                    <a href="{{ path('app_joueur_edit', {'idJoueur': joueur.idJoueur}) }}"><i class="nav-icon fas fa-edit" aria-hidden="true"></i></a> 
+                    <a href="{{ path('app_joueur_show', {'idJoueur': joueur.idJoueur}) }}">show</a>
+                    <a href="{{ path('app_joueur_edit', {'idJoueur': joueur.idJoueur}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -39,6 +38,5 @@
         </tbody>
     </table>
 
-    
-    <a href="{{ path('app_joueur_new') }}"><button type="submit" class="btn btn-success">Create new</button></a>
+    <a href="{{ path('app_joueur_new') }}">Create new</a>
 {% endblock %}

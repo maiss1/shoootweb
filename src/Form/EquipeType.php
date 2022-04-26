@@ -6,16 +6,7 @@ use App\Entity\Equipe;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use phpDocumentor\Reflection\Types\Integer;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\File;
 
 class EquipeType extends AbstractType
 {
@@ -24,14 +15,19 @@ class EquipeType extends AbstractType
         $builder
             ->add('nomEquipe')
             ->add('pays')
-            ->add('drapeau')
-            ->add('logo',FileType::class,[
-                'label'=> 'insert image',
-                'required'=> false,
+            ->add('drapeau', FileType::class,[
+                'label' => "insérer drapeau",
                 'data_class'=> null,
-                'mapped'=> true
+                'mapped' => true,
+                'required' => false
                
-                
+            ])
+            ->add('logo',  FileType::class,[
+                'label' => "insérer logo",
+                'data_class'=> null,
+                'mapped' => true,
+                'required' => false
+               
             ])
         ;
     }

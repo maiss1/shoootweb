@@ -26,8 +26,7 @@ class Equipe
      * @var string
      *
      * @ORM\Column(name="nom_equipe", type="string", length=255, nullable=false)
-     * @Assert\NotNull(message = "Ce champ ne peut pas etre vide! Veuillez le remplir.")
-     * @Assert\NotBlank(message = "Il parait que vous-avez oubliée de remplir le champ du nom !")
+     
      */
     private $nomEquipe;
 
@@ -35,8 +34,7 @@ class Equipe
      * @var string
      *
      * @ORM\Column(name="pays", type="string", length=255, nullable=false)
-     * @Assert\NotNull(message = "Ce champ ne peut pas etre vide! Veuillez le remplir.")
-     * @Assert\NotBlank(message = "Il parait que vous-avez oubliée de remplir le champ pays !")
+     
      */
     private $pays;
 
@@ -44,8 +42,7 @@ class Equipe
      * @var string
      *
      * @ORM\Column(name="drapeau", type="string", length=255, nullable=false)
-     * @Assert\NotNull(message = "Ce champ ne peut pas etre vide! Veuillez le remplir.")
-     * @Assert\NotBlank(message = "Il parait que vous-avez oubliée de remplir le champ du drapeau !")
+     
      */
     private $drapeau;
 
@@ -53,8 +50,7 @@ class Equipe
      * @var string
      *
      * @ORM\Column(name="logo", type="string", length=1255, nullable=false)
-     * @Assert\NotNull(message = "Ce champ ne peut pas etre vide! Veuillez le remplir.")
-     * @Assert\NotBlank(message = "Il parait que vous-avez oubliée de remplir le champ du logo !")
+     
      */
     private $logo;
 

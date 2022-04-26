@@ -1,22 +1,10 @@
 {% extends 'baseback.html.twig' %}
-
 {% block Container %}
-    
-    <section class="content">
-    <div class="container text-center">
     <h1>Create new Equipe</h1>
-        
-    
-        {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
-        {{ form_widget(form) }}
-    
-        
-        <div class="card-body"><a class="btn btn-success" style="width: 50%" href="{{ path('app_equipe_index') }}">Afficher Publication</a></div>
 
-       {{ form_end(form) }}
+    {{ include('equipee/_form.html.twig') }}
+
+    <a class="btn btn-outline-warning" href="{{ path('app_equipee_index') }}">back to list</a>
+
     
-       
-    
-    </div>
-    </section>
 {% endblock %}

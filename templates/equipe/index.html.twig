@@ -1,39 +1,116 @@
-{% extends 'baseback.html.twig' %}
 
+{% extends 'home/eq.html.twig' %}
 {% block Container %}
-    <h1>Equipe</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>IdEquipe</th>
-                <th>NomEquipe</th>
-                <th>Pays</th>
-                <th>Drapeau</th>
-                <th>Logo</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for equipe in equipes %}
-            <tr>
-                <td>{{ equipe.idEquipe }}</td>
-                <td>{{ equipe.nomEquipe }}</td>
-                <td>{{ equipe.pays }}</td>
-                <td>{{ equipe.drapeau }}</td>
-                <td>{{ equipe.logo }}</td>
-                <td>
-                    <a href="{{ path('app_equipe_show', {'idEquipe': equipe.idEquipe}) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                    <a href="{{ path('app_equipe_edit', {'idEquipe': equipe.idEquipe}) }}"><i class="nav-icon fas fa-edit" aria-hidden="true"></i></a> 
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+{% for message in app.flashes('info') %}
+<div class=alert alert-success>
+      {{ message }}
+</div>
+
+{% endfor %}
+
+ <link rel="stylesheet" href="{{ asset('dist/css/film/style.css') }}">
+ 
+<section class="content">
+
+      <!-- Default box -->
+      
+      <div class="card card-solid" >
+        <div class="card-body pb-0">
+         
+          <div class="row d-flex align-items-stretch">
+           
+           
+            {% for equipe in equipes %} 
+        
+            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+            
+         
+           
+              <div class="card bg-light">
+                 
+                <div class="card-body pt-0" style="background-color: #606060">
+               
+    
+    
+    
+ 
+        
+        <img class="displayed" src = "{{ asset('image/' ~ equipe.logo) }}" alt = "">
+        
+        <div class="blocktext">
+          <div class="blocktext">
+            <div class="col1">
+              <h1>{{ equipe.nomEquipe }}</h1>
+              <ul class="movie-gen">
+                         
+                <div class="d-flex justify-content-center">
+       
+        <img class="displayed" src = "{{ asset('image/' ~ equipe.drapeau) }}" alt = "">
+        <P class="blocktext"> {{ equipe.pays }} </P>
+        </div>
+
+        
+        
+        
+         
+            
+                    
+              </ul>
+            </div>
+          </div>
+          
+          
+          
+
+                    
+           
+          
+            
+        </div>
+        
+      </div>
+       
+          </div>
+        
+        </div>
         {% endfor %}
-        </tbody>
-    </table>
+      </div>
+  </div>
+</div>
 
-    <a href="{{ path('app_equipe_new') }}"><button type="submit" class="btn btn-success">Create new</button></a>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+
+        
+
+    
+       <div class="d-flex justify-content-between">
+       <script type="text/javascript">
+        function imprimer_page(){
+            window.print();
+        }
+</script>
+    <form>
+        <input id="impression" class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1s" name="impression" type="button" onclick="imprimer_page()" value="Print this page" />
+    </form>
+
+    
+
+       {% do equipes.setPageRange(3) %}
+       {{ knp_pagination_render(equipes) }}
+
+       
+      </div>
+      
+      <!-- /.card -->
+</section>
+
+
+
 {% endblock %}

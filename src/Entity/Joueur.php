@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Entity;
+use App\Entity\Equipe;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Joueur
@@ -25,8 +27,6 @@ class Joueur
      * @var string
      *
      * @ORM\Column(name="nom_joueur", type="string", length=255, nullable=false)
-     * @Assert\NotNull(message = "Ce champ ne peut pas etre vide! Veuillez le remplir.")
-     * @Assert\NotBlank(message = "Il parait que vous-avez oubliée de remplir le champ du nom joueur !")
      */
     private $nomJoueur;
 
@@ -48,8 +48,7 @@ class Joueur
      * @var string
      *
      * @ORM\Column(name="pays", type="string", length=255, nullable=false)
-     * @Assert\NotNull(message = "Ce champ ne peut pas etre vide! Veuillez le remplir.")
-     * @Assert\NotBlank(message = "Il parait que vous-avez oubliée de remplir le champ du pays !")
+     
      */
     private $pays;
 
@@ -57,8 +56,7 @@ class Joueur
      * @var string
      *
      * @ORM\Column(name="drapeau", type="string", length=255, nullable=false)
-     * @Assert\NotNull(message = "Ce champ ne peut pas etre vide! Veuillez le remplir.")
-     * @Assert\NotBlank(message = "Il parait que vous-avez oubliée de remplir le champ du drapeau !")
+     
      */
     private $drapeau;
 
@@ -66,8 +64,7 @@ class Joueur
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=1255, nullable=false)
-     * @Assert\NotNull(message = "Ce champ ne peut pas etre vide! Veuillez le remplir.")
-     * @Assert\NotBlank(message = "Il parait que vous-avez oubliée de remplir le champ du image !")
+     
      */
     private $image;
 
