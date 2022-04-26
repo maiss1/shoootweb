@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<title>Mat</title>
+
+{% block body %}
+    <h1>Mat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mat.id }}</td>
+            </tr>
+            <tr>
+                <th>Equipe1</th>
+                <td>{{ mat.equipe1 }}</td>
+            </tr>
+            <tr>
+                <th>Equipe2</th>
+                <td>{{ mat.equipe2 }}</td>
+            </tr>
+            <tr>
+                <th>Id_comp</th>
+                <td>{{ mat.idComp }}</td>
+            </tr>
+            <tr>
+                <th>Id_stat</th>
+                <td>{{ mat.idStat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_mat_index') }}">back to list</a>
+
+    <a href="{{ path('app_mat_edit', {'id': mat.id}) }}">edit</a>
+
+    {{ include('mat/_delete_form.html.twig') }}
+{% endblock %}

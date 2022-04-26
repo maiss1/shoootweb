@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<title>Mat index</title>
+
+{% block body %}
+    <h1>Mat index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Equipe1</th>
+                <th>Equipe2</th>
+                <th>Id_comp</th>
+                <th>Id_stat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mat in mats %}
+            <tr>
+                <td>{{ mat.id }}</td>
+                <td>{{ mat.equipe1 }}</td>
+                <td>{{ mat.equipe2 }}</td>
+                <td>{{ mat.idComp }}</td>
+                <td>{{ mat.idStat }}</td>
+                <td>
+                    <a href="{{ path('app_mat_show', {'id': mat.id}) }}">show</a>
+                    <a href="{{ path('app_mat_edit', {'id': mat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_mat_new') }}">Create new</a>
+{% endblock %}

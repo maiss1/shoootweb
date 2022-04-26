@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Mat</title>
+
+{% block body %}
+    <h1>Create new Mat</h1>
+
+    {{ include('mat/_form.html.twig') }}
+
+    <a href="{{ path('app_mat_index') }}">back to list</a>
+{% endblock %}

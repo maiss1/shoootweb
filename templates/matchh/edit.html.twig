@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit Matchh</title>
+
+{% block body %}
+    <h1>Edit Matchh</h1>
+
+    {{ include('matchh/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_matchh_index') }}">back to list</a>
+
+    {{ include('matchh/_delete_form.html.twig') }}
+{% endblock %}

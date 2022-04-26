@@ -17,7 +17,7 @@ class CartesType extends AbstractType
             ->add('level')
             ->add('prix')
             ->add('idPremuim')
-            ->add('imgcarte')
+            ->add('imgcarte',FileType::class)
         ;
     }
 

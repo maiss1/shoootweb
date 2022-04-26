@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Cartes;
 use App\Form\CartesType;
+use App\Form\Carte2Type;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Knp\Component\Pager\PaginatorInterface;
 /**
  * @Route("/cartes")
  */
@@ -18,11 +20,20 @@ class CartesController extends AbstractController
     /**
      * @Route("/", name="app_cartes_index", methods={"GET"})
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager, PaginatorInterface $paginator, Request $request): Response
     {
         $cartes = $entityManager
             ->getRepository(Cartes::class)
             ->findAll();
+            $cartes = $paginator->paginate(
+                // Doctrine Query, not results
+                $cartes,
+                // Define the page parameter
+                $request->query->getInt('page', 1),
+                // Items per page
+                2
+            );
+
 
         return $this->render('cartes/index.html.twig', [
             'cartes' => $cartes,
@@ -39,7 +50,13 @@ class CartesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form->get('imgcarte')->getData();
            
+            $fileName = md5 (uniqid()).'.'.$file->guessExtension();
+            $file->move( $this->getParameter('image_directory'),$fileName);
+            $carte->setImgcarte($fileName);
+            $em=$this->getDoctrine()->getManager();
+
             
             $entityManager->persist($carte);
             $entityManager->flush();
@@ -68,7 +85,7 @@ class CartesController extends AbstractController
      */
     public function edit(Request $request, Cartes $carte, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(CartesType::class, $carte);
+        $form = $this->createForm(Carte2Type::class, $carte);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

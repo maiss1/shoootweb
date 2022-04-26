@@ -1,10 +1,27 @@
-{% extends 'basefront.html.twig' %}
+{% extends 'baseback.html.twig' %}
 
 
 {% block Container %}
-    <h1>Cartes index</h1>
+    <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div  class="form-control" style="height: 45rem; margin-top: 5rem;">
+                        <form id="quickForm">
+                            <div class="card-body">
 
-    <table class="table">
+    <h1>Cartes index</h1>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div  class="form-control" style="height: 45rem; margin-top: 5rem;">
+                    <form id="quickForm">
+                        <div class="card-body">
+<input type="text" id="search" class="form-control form-control-no-border mr-sm-2" placeholder="chercher...">
+      <br>
+      <script src="{{ asset('jquery.min.js') }}"></script>
+
+
+    <table class="table" id="tableac">
         <thead>
             <tr>
                 <th>Id</th>
@@ -26,10 +43,10 @@
                 <td>{{ carte.level }}</td>
                 <td>{{ carte.prix }}</td>
                 <td>{{ carte.idPremuim }}</td>
-                <td>{{ carte.imgcarte }}</td>
+                <td><img src = "{{ asset('image/' ~ carte.imgcarte) }}" alt = ""></td>
                 <td>
-                    <a href="{{ path('app_cartes_show', {'id': carte.id}) }}">show</a>
-                    <a href="{{ path('app_cartes_edit', {'id': carte.id}) }}">edit</a>
+                    <a href="{{ path('app_cartes_show', {'id': carte.id}) }}"><button type="button" class="btn btn-dark mb-2">Détails</button></a></a>
+                    <a href="{{ path('app_cartes_edit', {'id': carte.id}) }}"><button type="button" class="btn btn-dark mb-2">Edit</button></a></a>
                 </td>
             </tr>
         {% else %}
@@ -40,5 +57,50 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_cartes_new') }}">Create new</a>
+   <center> <a href="{{ path('app_cartes_new') }}"><button type="button" class="btn btn-primary mb-2">Create</button></a></a></center>
+    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+       {% do cartes.setPageRange(3) %}
+       {{ knp_pagination_render(cartes) }}
+      </div>
+
+
+        </section>
+        <script>
+    $(document).ready(function(){
+        $('#search').keyup(function(){
+            search_table($(this).val());
+        });
+        function search_table(value){
+            $('#tableac tbody tr').each(function(){
+                var found = 'false';
+                $(this).each(function(){
+                    if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                    {
+                        found = 'true';
+                    }
+                });
+                if(found == 'true')
+                {
+                    $(this).show();
+                }
+                else
+                {
+                    $(this).hide();
+                }
+            });
+        }
+    });
+</script>
 {% endblock %}
