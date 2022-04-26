@@ -2,30 +2,30 @@
 
 namespace Matchh\Repository;
 
-use App\Entity\Matchh;
+use Matchh\Entity\Matchh;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method App|null find($id, $lockMode = null, $lockVersion = null)
- * @method App|null findOneBy(array $criteria, array $orderBy = null)
- * @method App[]    findAll()
- * @method App[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Matchh|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Matchh|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Matchh[]    findAll()
+ * @method Matchh[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AppRepository extends ServiceEntityRepository
+class MatchhRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, App::class);
+        parent::__construct($registry, Matchh::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(App $entity, bool $flush = true): void
+    public function add(Matchh $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class AppRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(App $entity, bool $flush = true): void
+    public function remove(Matchh $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,7 +46,7 @@ class AppRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return App[] Returns an array of App objects
+    //  * @return Matchh[] Returns an array of Matchh objects
     //  */
     /*
     public function findByExampleField($value)
@@ -63,7 +63,7 @@ class AppRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?App
+    public function findOneBySomeField($value): ?Matchh
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

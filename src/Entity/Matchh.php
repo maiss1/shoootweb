@@ -47,7 +47,7 @@ class Matchh
      * @var string
      *
      * @ORM\Column(name="date", type="string", length=255, nullable=false)
-     * @Assert\DateTime(message="  doit etre Date")
+     * @Assert\DateTime(message="doit etre Date")
      */
     private $date;
 

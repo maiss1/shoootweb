@@ -1,0 +1,45 @@
+{% extends 'basefront.html.twig' %}
+
+{% block Container %}
+    <h1>Statistique index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idd</th>
+                <th>Titrematch</th>
+                <th>But</th>
+                <th>NButeur</th>
+                <th>NPasseur</th>
+                <th>NbCorner</th>
+                <th>NbFaute</th>
+                <th>NbCarton</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for statistique in statistiques %}
+            <tr>
+                <td>{{ statistique.idd }}</td>
+                <td>{{ statistique.titrematch }}</td>
+                <td>{{ statistique.but }}</td>
+                <td>{{ statistique.nButeur }}</td>
+                <td>{{ statistique.nPasseur }}</td>
+                <td>{{ statistique.nbCorner }}</td>
+                <td>{{ statistique.nbFaute }}</td>
+                <td>{{ statistique.nbCarton }}</td>
+                <td>
+                    <a href="{{ path('app_statistique_show', {'idd': statistique.idd}) }}">show</a>
+                    <a href="{{ path('app_statistique_edit', {'idd': statistique.idd}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_statistique_new') }}">Create new</a>
+{% endblock %}
