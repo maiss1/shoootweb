@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin index{% endblock %}
+
+{% block body %}
+    <h1>Admin index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Admins</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for admin in admins %}
+            <tr>
+                <td>{{ admin.prenom }} {{ admin.nom }}</td>
+                <td>
+                    <a href="{{ path('app_admin_show', {'id': admin.id}) }}"class="btn btn-dark">Details</a>
+                    <a href="{{ path('app_admin_edit', {'id': admin.id}) }}"class="btn btn-dark">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_new') }}" class="btn btn-success">Ajouter</a>
+{% endblock %}
