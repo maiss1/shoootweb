@@ -1,0 +1,10 @@
+{% extends 'baseback.html.twig' %}
+{% block Container %}
+    <h1>Create new Equipe</h1>
+
+    {{ include('equipee/_form.html.twig') }}
+
+    <a class="btn btn-outline-warning" href="{{ path('app_equipee_index') }}">back to list</a>
+
+    
+{% endblock %}

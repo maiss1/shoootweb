@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="{{ asset('dist/css/carte/style.css') }}">
+<section class="content">
+
+      <!-- Default box -->
+      
+      <div class="card card-solid" >
+        <div class="card-body pb-0">
+         
+          <div class="row d-flex align-items-stretch">
+           
+           <div class="grix xs2 sm5 gutter-0 card">
+    <div class="col-xs1">
+    <a style="color: #dc3545;right: 15px;" href="">filter</a>
+     
+    <a style="color: #dc3545;right: 15px;" href="/top/afficherTop">TOP</a>
+     <a style="color: #dc3545" href="/archive">Archive</a>
+    </div>
+  
+    </div>
+            {% for carte in cartes %} 
+        
+            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+            
+         
+           
+              <div class="card bg-light">
+                 
+                <div class="card-body pt-0" style="background-color: #1e1b26">
+               
+    
+    <div class="movie-img">
+        
+        <img src = "{{ asset('image/' ~ carte.imgcarte) }}" alt = "">
+        </div>
+        <div class="text-movie-cont">
+          <div class="mr-grid">
+            <div class="col1">
+              <h1>{{ carte.nom }}</h1>
+              <ul class="movie-gen">
+                         
+                <li>{{ carte.level }} minutes/</li>
+                <li>{{ carte.prix }}</li>
+                
+                    
+              </ul>
+            </div>
+          </div>
+          <div class="mr-grid summary-row">
+            <div class="col2">
+              <h5>SUMMARY</h5>
+            </div>
+          
+            <div class="col2">
+               <ul class="movie-likes">
+                <li><i class="material-icons"></i></li>
+
+                
+              </ul>
+            </div>
+          </div>
+          <div class="mr-grid">
+            <div class="col1">
+              <p class="movie-description">{{ carte.nom }} </p>
+            </div>
+          </div>
+         
+          
+          
+          
+
+                    
+           
+          <div class="mr-grid action-row">
+            <div class="col2"><div class="watch-btn"><h3><i class="material-icons"></i>Réserver la carte</h3></div>
+            </div>
+            
+          </div>
+            
+        </div>
+        
+      </div>
+       
+          </div>
+        
+        </div>
+        {% endfor %}
+      </div>
+  </div>
+</div>
+
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      
+      <!-- /.card -->
+</section>

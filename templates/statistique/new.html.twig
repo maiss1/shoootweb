@@ -1,0 +1,8 @@
+{% extends 'baseback.html.twig' %}
+{% block Container %}
+    <h1>Create new Statistique</h1>
+
+    {{ include('statistique/_form.html.twig') }}
+
+    <a href="{{ path('app_statistique_index') }}">back to list</a>
+{% endblock %}

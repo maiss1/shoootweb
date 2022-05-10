@@ -1,0 +1,64 @@
+{% extends 'baseback.html.twig' %}
+{% block Container %}
+    <h1>Equipe</h1>
+
+   
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdEquipe</th>
+                <td>{{ equipe.idEquipe }}</td>
+            </tr>
+            <tr>
+                <th>NomEquipe</th>
+                <td>{{ equipe.nomEquipe }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ equipe.pays }}</td>
+            </tr>
+            <tr>
+                <th>Drapeau</th>
+                <td>{{ equipe.drapeau }}</td>
+            </tr>
+            <tr>
+                <th>Logo</th>
+                <td>{{ equipe.logo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        function imprimer_page(){
+            window.print();
+        }
+</script>
+    
+
+
+
+    
+
+
+   
+    <div class="d-flex justify-content-between">
+
+    <script type="text/javascript">
+        function imprimer_page(){
+            window.print();
+        }
+</script>
+       
+<form>
+        <input id="impression" class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1s" name="impression" type="button" onclick="imprimer_page()" value="Print this page" />
+    </form>
+
+ {{ include('equipe/_delete_form.html.twig') }}
+
+<a class="btn btn-outline-warning" href="{{ path('app_equipee_index') }}">back to list</a>
+
+      </div>
+
+
+{% endblock %}

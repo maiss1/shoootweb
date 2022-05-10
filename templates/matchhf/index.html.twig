@@ -1,0 +1,41 @@
+{% extends 'home/jou.html.twig' %}
+{% block Container %}
+
+    <h1>Matchh index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdMatch</th>
+                <th>IdEquipe1</th>
+                <th>IdEquipe2</th>
+                <th>Date</th>
+                <th>IdComp</th>
+                <th>IdStat</th>
+                <th>IdProno</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for matchh in matchhs %}
+            <tr>
+                <td>{{ matchh.idMatch }}</td>
+                <td>{{ matchh.idEquipe1 }}</td>
+                <td>{{ matchh.idEquipe2 }}</td>
+                <td>{{ matchh.date }}</td>
+                <td>{{ matchh.idComp }}</td>
+                <td>{{ matchh.idStat }}</td>
+                <td>{{ matchh.idProno }}</td>
+                <td>
+                    <a href="{{ path('app_matchhf_show', {'idMatch': matchh.idMatch}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

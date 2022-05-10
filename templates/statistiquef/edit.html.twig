@@ -1,0 +1,10 @@
+{% extends 'home/eq.html.twig' %}
+{% block Container %}
+    <h1>Edit Statistique</h1>
+
+    {{ include('statistiquef/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_statistiquef_index') }}">back to list</a>
+
+    {{ include('statistiquef/_delete_form.html.twig') }}
+{% endblock %}

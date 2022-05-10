@@ -1,0 +1,42 @@
+{% extends 'home/eq.html.twig' %}
+{% block Container %}
+
+    <h1>Matchh</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdMatch</th>
+                <td>{{ matchh.idMatch }}</td>
+            </tr>
+            <tr>
+                <th>IdEquipe1</th>
+                <td>{{ matchh.idEquipe1 }}</td>
+            </tr>
+            <tr>
+                <th>IdEquipe2</th>
+                <td>{{ matchh.idEquipe2 }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ matchh.date }}</td>
+            </tr>
+            <tr>
+                <th>IdComp</th>
+                <td>{{ matchh.idComp }}</td>
+            </tr>
+            <tr>
+                <th>IdStat</th>
+                <td>{{ matchh.idStat }}</td>
+            </tr>
+            <tr>
+                <th>IdProno</th>
+                <td>{{ matchh.idProno }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_matchhf_index') }}">back to list</a>
+
+
+{% endblock %}

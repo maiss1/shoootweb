@@ -1,0 +1,116 @@
+
+{% extends 'home/jou.html.twig' %}
+{% block Container %}
+
+{% for message in app.flashes('info') %}
+<div class=alert alert-success>
+      {{ message }}
+</div>
+
+{% endfor %}
+
+ <link rel="stylesheet" href="{{ asset('dist/css/film/style.css') }}">
+ 
+<section class="content">
+
+      <!-- Default box -->
+      
+      <div class="card card-solid" >
+        <div class="card-body pb-0">
+         
+          <div class="row d-flex align-items-stretch">
+           
+           
+            {% for equipe in equipes %} 
+        
+            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+            
+         
+           
+              <div class="card bg-light">
+                 
+                <div class="card-body pt-0" style="background-color: #032335">
+               
+    
+    
+    
+ 
+        
+        <img class="displayed" src = "{{ asset('image/' ~ equipe.logo) }}" alt = "">
+        
+        <div class="blocktext">
+          <div class="blocktext">
+            <div class="col1">
+              <h1>{{ equipe.nomEquipe }}</h1>
+              <ul class="movie-gen">
+                         
+                <div class="d-flex justify-content-center">
+       
+        <img class="displayed" src = "{{ asset('image/' ~ equipe.drapeau) }}" alt = "">
+        <P class="blocktext"> {{ equipe.pays }} </P>
+        </div>
+
+        
+        
+        
+         
+            
+                    
+              </ul>
+            </div>
+          </div>
+          
+          
+          
+
+                    
+           
+          
+            
+        </div>
+        
+      </div>
+       
+          </div>
+        
+        </div>
+        {% endfor %}
+      </div>
+  </div>
+</div>
+
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+
+        
+
+    
+       <div class="d-flex justify-content-between">
+       <script type="text/javascript">
+        function imprimer_page(){
+            window.print();
+        }
+</script>
+    <form>
+        <input id="impression" class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1s" name="impression" type="button" onclick="imprimer_page()" value="Print this page" />
+    </form>
+
+    
+
+       {% do equipes.setPageRange(3) %}
+       {{ knp_pagination_render(equipes) }}
+
+       
+      </div>
+      
+      <!-- /.card -->
+</section>
+
+
+
+{% endblock %}

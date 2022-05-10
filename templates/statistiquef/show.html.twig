@@ -1,0 +1,50 @@
+{% extends 'home/jou.html.twig' %}
+{% block Container %}
+
+    <h1>Statistique</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idd</th>
+                <td>{{ statistique.idd }}</td>
+            </tr>
+            <tr>
+                <th>Titrematch</th>
+                <td>{{ statistique.titrematch }}</td>
+            </tr>
+            <tr>
+                <th>But</th>
+                <td>{{ statistique.but }}</td>
+            </tr>
+            <tr>
+                <th>NButeur</th>
+                <td>{{ statistique.nButeur }}</td>
+            </tr>
+            <tr>
+                <th>NPasseur</th>
+                <td>{{ statistique.nPasseur }}</td>
+            </tr>
+            <tr>
+                <th>NbCorner</th>
+                <td>{{ statistique.nbCorner }}</td>
+            </tr>
+            <tr>
+                <th>NbFaute</th>
+                <td>{{ statistique.nbFaute }}</td>
+            </tr>
+            <tr>
+                <th>NbCarton</th>
+                <td>{{ statistique.nbCarton }}</td>
+            </tr>
+            <tr>
+                <th>IdMatch</th>
+                <td>{{ statistique.idMatch }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_statistiquef_index') }}">back to list</a>
+
+    
+{% endblock %}
