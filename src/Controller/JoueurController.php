@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 /**
  * @Route("/joueur")
@@ -18,11 +20,13 @@ class JoueurController extends AbstractController
     /**
      * @Route("/", name="app_joueur_index", methods={"GET"})
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager, PaginatorInterface $paginator, Request $request): Response
     {
         $joueurs = $entityManager
             ->getRepository(Joueur::class)
             ->findAll();
+
+            
 
         return $this->render('joueur/index.html.twig', [
             'joueurs' => $joueurs,
@@ -39,6 +43,20 @@ class JoueurController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $file = $form->get('drapeau')->getData();
+            $file2 = $form->get('image')->getData();
+
+            $fileName = md5 (uniqid()).'.'.$file->guessExtension();
+            $file->move( $this->getParameter('images_directory'),$fileName);
+            $joueur->setDrapeau($fileName);
+
+            $fileName2 = md5 (uniqid()).'.'.$file2->guessExtension();
+            $file2->move( $this->getParameter('images_directory'),$fileName2);
+            $joueur->setImage($fileName2);
+
+            $em=$this->getDoctrine()->getManager();
+
             $entityManager->persist($joueur);
             $entityManager->flush();
 
@@ -70,6 +88,21 @@ class JoueurController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $file3 = $form->get('drapeau')->getData();
+            $file4 = $form->get('image')->getData();
+
+            $fileName3 = md5 (uniqid()).'.'.$file3->guessExtension();
+            $file3->move( $this->getParameter('images_directory'),$fileName3);
+            $joueur->setDrapeau($fileName3);
+
+            $fileName4 = md5 (uniqid()).'.'.$file4->guessExtension();
+            $file4->move( $this->getParameter('images_directory'),$fileName4);
+            $joueur->setImage($fileName4);
+
+            $em=$this->getDoctrine()->getManager();
+
+
             $entityManager->flush();
 
             return $this->redirectToRoute('app_joueur_index', [], Response::HTTP_SEE_OTHER);

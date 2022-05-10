@@ -110,9 +110,23 @@ class EquipeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $file3 = $form->get('logo')->getData();
+            $file4 = $form->get('drapeau')->getData();
+
+            $fileName3 = md5 (uniqid()).'.'.$file3->guessExtension();
+            $file3->move( $this->getParameter('images_directory'),$fileName3);
+            $equipe->setLogo($fileName3);
+
+            $fileName4 = md5 (uniqid()).'.'.$file4->guessExtension();
+            $file4->move( $this->getParameter('images_directory'),$fileName4);
+            $equipe->setDrapeau($fileName4);
+
+            $em=$this->getDoctrine()->getManager();
+
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_equipe_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_equipee_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('equipe/edit.html.twig', [
@@ -131,6 +145,6 @@ class EquipeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_equipe_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_equipee_index', [], Response::HTTP_SEE_OTHER);
     }
 }

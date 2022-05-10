@@ -1,4 +1,4 @@
-{% extends 'baseback.html.twig' % }
+{% extends 'baseback.html.twig' %}
 {% block Container %}
     <h1>Joueur</h1>
 
@@ -35,9 +35,24 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_joueur_index') }}">back to list</a>
+    <div class="d-flex justify-content-between">
+    <script type="text/javascript">
+        function imprimer_page(){
+            window.print();
+        }
+</script>
+       
+<form>
+        <input id="impression" class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1s" name="impression" type="button" onclick="imprimer_page()" value="Print this page" />
+    </form>
 
-    <a href="{{ path('app_joueur_edit', {'idJoueur': joueur.idJoueur}) }}">edit</a>
+  {{ include('joueur/_delete_form.html.twig') }}
 
-    {{ include('joueur/_delete_form.html.twig') }}
+<a class="btn btn-outline-success"  href="{{ path('app_joueur_edit', {'idJoueur': joueur.idJoueur}) }}">edit</a>
+
+
+<a class="btn btn-outline-warning" href="{{ path('app_joueur_index') }}">back to list</a>
+
+
+      </div>
 {% endblock %}

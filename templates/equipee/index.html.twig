@@ -30,6 +30,8 @@
                     
                     <div class="d-flex justify-content-center">
             <a href="{{ path('app_equipee_show', {'idEquipe': equipe.idEquipe}) }}" class="btn btn-outline-danger">Show</a>
+            <a href="{{ path('app_equipe_edit', {'idEquipe': equipe.idEquipe}) }}"class="btn btn-outline-primary">Edit</a>
+
          </div>
                 </td>
             </tr>
@@ -55,9 +57,7 @@
 
     
        <a href="{{ path('app_equipe_new') }}" class="btn btn-outline-success">Create new</a>
-
-       
-
+  
        
       </div>
 

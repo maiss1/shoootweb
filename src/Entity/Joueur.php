@@ -2,15 +2,18 @@
 
 namespace App\Entity;
 use App\Entity\Equipe;
+use App\Repository\JoueurRepository;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Joueur
  *
  * @ORM\Table(name="joueur", indexes={@ORM\Index(name="nom_joueur", columns={"nom_joueur"}), @ORM\Index(name="fk_equipe", columns={"nom_equipe"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\JoueurRepository")
  */
 class Joueur
 {
@@ -69,12 +72,9 @@ class Joueur
     private $image;
 
     /**
-     * @var \Equipe
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Equipe" , fetch="EAGER")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="nom_equipe", referencedColumnName="nom_equipe")
-     * })
+     * @ORM\Column(name="nom_equipe", type="string", length=255, nullable=false)
      */
     private $nomEquipe;
 
@@ -155,21 +155,23 @@ class Joueur
         return $this;
     }
 
-    public function getNomEquipe(): ?Equipe
+    public function getNomEquipe(): ?string
     {
         return $this->nomEquipe;
     }
 
-    public function setNomEquipe(?Equipe $nomEquipe): self
+    public function setNomEquipe(string $nomEquipe): self
     {
         $this->nomEquipe = $nomEquipe;
 
         return $this;
     }
 
+    
+
     public function __toString()
     {
-        return $this->nomJoueur;
+        return $this->idJoueur;
     }
 
     

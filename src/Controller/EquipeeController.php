@@ -60,6 +60,8 @@ class EquipeeController extends AbstractController
      */
     public function show(Equipe $equipe): Response
     {
+        
+        
         return $this->render('equipee/show.html.twig', [
             'equipe' => $equipe,
         ]);
@@ -88,11 +90,12 @@ class EquipeeController extends AbstractController
     /**
      * @Route("/{idEquipe}", name="app_equipee_delete", methods={"POST"})
      */
-    public function delete(Request $request, Equipe $equipe, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Equipe $equipe, EntityManagerInterface $entityManager, FlashyNotifier $flashy): Response
     {
         if ($this->isCsrfTokenValid('delete'.$equipe->getIdEquipe(), $request->request->get('_token'))) {
             $entityManager->remove($equipe);
             $entityManager->flush();
+            
         }
 
         return $this->redirectToRoute('app_equipee_index', [], Response::HTTP_SEE_OTHER);

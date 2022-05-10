@@ -14,8 +14,20 @@ class Equipe2Type extends AbstractType
         $builder
             ->add('nomEquipe')
             ->add('pays')
-            ->add('drapeau')
-            ->add('logo')
+            ->add('drapeau', FileType::class,[
+                'label' => "insérer drapeau",
+                'data_class'=> null,
+                'mapped' => true,
+                'required' => false
+               
+            ])
+            ->add('logo',  FileType::class,[
+                'label' => "insérer logo",
+                'data_class'=> null,
+                'mapped' => true,
+                'required' => false
+               
+            ])
         ;
     }
 
